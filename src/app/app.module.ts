@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,8 @@ import { reducers } from "./store/app.states";
 import { EffectsModule } from "@ngrx/effects";
 import { MovieEffect } from "./store/movies/movie.effects";
 import { HttpClientModule } from "@angular/common/http";
+import { NgxSpinnerModule } from "ngx-spinner";
+
 
 @NgModule({
   declarations: [
@@ -19,10 +22,12 @@ import { HttpClientModule } from "@angular/common/http";
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule,
     StoreModule.forRoot(reducers, {}),
     EffectsModule.forRoot([MovieEffect]),
     StoreDevtoolsModule.instrument({
-      logOnly: !environment.production
+      logOnly: environment.production
     }),
   ],
   providers: [],
