@@ -1,0 +1,34 @@
+<header class="relative">
+
+  <!--navbar-->
+  <div class="flex flex-row border-black border-4 p-2 font-medium w-full">
+    <img (click)="showHide()" class="cursor-pointer mr-4" src="assets/images/icon-menu.svg" alt="menu icon">
+    <span class="text-2xl w-full text-center">Titulo</span>
+  </div>
+
+  <!--sidebar-->
+  <nav class="flex flex-col w-64 h-screen border-black border-2 bg-white absolute top-0 transform -translate-x-full transition duration-200 ease-in-out" #showHideMenu>
+    <div class="flex justify-between p-3">
+      <span class="font-medium text-2xl">Menu</span>
+      <img (click)="showHide()" class="cursor-pointer mt-1 mr-0.5" src="assets/images/icon-cross.svg" alt="cross icon">
+    </div>
+    <ul class="text-lg">
+      <li class="flex justify-between p-3.5 border-b border-black cursor-pointer"
+          routerLink="/movies"
+          routerLinkActive="bg-gray-100"
+      >
+        <span>{{ 'navbar.movies' | translate }}</span>
+        <img src="assets/images/icon-arrow-right.svg" alt="arrow right icon">
+      </li>
+      <li class="flex justify-between p-3.5 border-b border-black cursor-pointer">
+        <span>{{ 'navbar.actors' | translate }}</span>
+        <img src="assets/images/icon-arrow-right.svg" alt="arrow right icon">
+      </li>
+      <li class="flex justify-between p-3.5 border-b border-black cursor-pointer">
+        <span>{{ 'navbar.studios' | translate }}</span>
+        <img src="assets/images/icon-arrow-right.svg" alt="arrow right icon">
+      </li>
+    </ul>
+  </nav>
+
+</header>
