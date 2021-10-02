@@ -10,9 +10,16 @@ import { environment } from "../environments/environment";
 import { reducers } from "./store/app.states";
 import { EffectsModule } from "@ngrx/effects";
 import { MovieEffect } from "./store/movies/movie.effects";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { NgxSpinnerModule } from "ngx-spinner";
+import { ToastrModule } from "ngx-toastr";
 
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -24,6 +31,15 @@ import { NgxSpinnerModule } from "ngx-spinner";
     AppRoutingModule,
     NgxSpinnerModule,
     BrowserAnimationsModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'es',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient],
+      },
+    }),
+    ToastrModule.forRoot(),
     StoreModule.forRoot(reducers, {}),
     EffectsModule.forRoot([MovieEffect]),
     StoreDevtoolsModule.instrument({

@@ -12,24 +12,29 @@ import { catchError, map, switchMap, tap } from "rxjs/operators";
 import { MovieService } from "../../core/services/movie.service";
 import { of } from "rxjs";
 import { NgxSpinnerService } from "ngx-spinner";
+import { ToastrService } from "ngx-toastr";
 
 @Injectable()
 export class MovieEffect {
 
   constructor(private actions$: Actions,
               private movieSvc: MovieService,
-              private spinner: NgxSpinnerService) {
+              private spinnerSvc: NgxSpinnerService,
+              private toastrSvc: ToastrService) {
   }
 
   getMovies$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getMovies),
-      tap(() => this.spinner.show()),
+      tap(() => this.spinnerSvc.show()),
       switchMap(() =>
         this.movieSvc.getMovies().pipe(
           map(movies => getMoviesSuccess({ movies })),
-          tap(() => this.spinner.hide()),
-          catchError(error => of(getMoviesFailure({ error: error.error })))
+          catchError(error => {
+            this.toastrSvc.error('Error al obtener listado de peliculas');
+            return of(getMoviesFailure({ error: error.message }));
+          }),
+          tap(() => this.spinnerSvc.hide())
         )
       )
     )
@@ -38,12 +43,15 @@ export class MovieEffect {
   getMovieById$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getMovieById),
-      tap(() => this.spinner.show()),
+      tap(() => this.spinnerSvc.show()),
       switchMap(({ id }) =>
         this.movieSvc.getMovieById(id).pipe(
           map(movie => getMovieByIdSuccess({ movie })),
-          tap(() => this.spinner.hide()),
-          catchError(error => of(getMovieByIdFailure({ error: error.error })))
+          catchError(error => {
+            this.toastrSvc.error(error.message);
+            return of(getMovieByIdFailure({ error: error.message }));
+          }),
+          tap(() => this.spinnerSvc.hide())
         )
       )
     )
