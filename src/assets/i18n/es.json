@@ -14,13 +14,34 @@
     "delete-title": "Borrar pelicula",
     "delete-message": "¿Estas seguro que desea borrar esta pelicula?",
     "delete-cancel-btn": "Cancelar",
-    "delete-submit-btn": "Confirmar"
+    "delete-submit-btn": "Confirmar",
+    "create-update": {
+      "title": "Título",
+      "title-placeholder": "Título",
+      "poster": "Poster (url)",
+      "poster-placeholder": "Poster (url)",
+      "genres": "Géneros",
+      "genres-placeholder": "Añade un género",
+      "genres-not-found": "Genero no encontado",
+      "actors": "Actores",
+      "actors-placeholder": "Selecciona un actor",
+      "actors-not-found": "Actor no encontado",
+      "company": "Estudio",
+      "company-placeholder": "Estudio",
+      "year": "Año",
+      "year-placeholder": "Año",
+      "duration": "Duración",
+      "duration-placeholder": "Duración",
+      "score": "Puntuación",
+      "score-placeholder": "Puntuación"
+    }
   },
   "errors": {
     "movies": "Error al obtener listado de peliculas",
     "movie": "Error al obtener pelicula",
     "movie-delete": "Error al eliminar pelicula",
     "actors": "Error al obtener los actores",
+    "companies": "Error al obtener listado de estudios",
     "company": "Error al obtener estudio"
   }
 }

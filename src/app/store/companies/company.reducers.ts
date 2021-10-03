@@ -1,6 +1,13 @@
 import { Company } from "../../core/models/company";
 import { createReducer, on } from "@ngrx/store";
-import { getCompanyById, getCompanyByIdFailure, getCompanyByIdSuccess } from "./company.actions";
+import {
+  getCompanies,
+  getCompaniesFailure,
+  getCompaniesSuccess,
+  getCompanyById,
+  getCompanyByIdFailure,
+  getCompanyByIdSuccess
+} from "./company.actions";
 
 export interface CompanyState {
   companies: Company[],
@@ -18,6 +25,26 @@ export const initialState: CompanyState = {
 
 export const companyReducer = createReducer(
   initialState,
+  on(getCompanies, (state) => {
+    return {
+      ...state,
+      loading: true
+    }
+  }),
+  on(getCompaniesSuccess, (state, action) => {
+    return {
+      ...state,
+      companies: action.companies,
+      loading: false
+    }
+  }),
+  on(getCompaniesFailure, (state, action) => {
+    return {
+      ...state,
+      loading: false,
+      error: action.error
+    }
+  }),
   on(getCompanyById, (state) => {
     return {
       ...state,

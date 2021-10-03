@@ -1,0 +1,122 @@
+<form class="p-5 grid gap-5" [formGroup]="form" (ngSubmit)="movie ? updateMovie() : saveMovie()">
+
+  <div class="flex flex-col font-medium">
+    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+           for="title">{{ 'movies.create-update.title' | translate }}</label>
+    <input
+      class="block w-full text-gray-700 border border-gray-300 rounded py-2 px-2.5 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+      type="text"
+      id="title"
+      placeholder="{{ 'movies.create-update.title-placeholder' | translate }}"
+      formControlName="title"
+      [ngClass]="{ 'border-red-600': form.invalid && (formControls.title.dirty || formControls.title.touched) && formControls.title.errors }"
+    >
+  </div>
+
+  <div class="flex flex-col font-medium">
+    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+           for="poster">{{ 'movies.create-update.poster' | translate }}</label>
+    <input
+      class="block w-full text-gray-700 border border-gray-300 rounded py-2 px-2.5 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+      type="text"
+      id="poster"
+      placeholder="{{ 'movies.create-update.poster-placeholder' | translate }}"
+      formControlName="poster"
+      [ngClass]="{ 'border-red-600': form.invalid && (formControls.poster.dirty || formControls.poster.touched) && formControls.poster.errors }"
+    >
+  </div>
+
+  <div class="flex flex-col font-medium">
+    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+           for="genres">{{ 'movies.create-update.genres' | translate }}</label>
+    <ng-select id="genres"
+               bindLabel="name"
+               placeholder="{{ 'movies.create-update.genres-placeholder' | translate }}"
+               addTagText="{{ 'movies.create-update.genres-placeholder' | translate }}"
+               notFoundText="{{ 'movies.create-update.genres-placeholder' | translate }}"
+               [items]="genres"
+               [addTag]="addGenre"
+               [hideSelected]="true"
+               [multiple]="true"
+               [(ngModel)]="selectedGenres"
+               [ngModelOptions]="{ standalone: true }"
+    >
+    </ng-select>
+  </div>
+
+  <div class="flex flex-col font-medium">
+    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+           for="actors">{{ 'movies.create-update.actors' | translate }}</label>
+    <ng-select id="actors"
+               bindLabel="name"
+               placeholder="{{ 'movies.create-update.actors-placeholder' | translate }}"
+               notFoundText="{{ 'movies.create-update.actors-not-found' | translate }}"
+               [items]="companies"
+               [hideSelected]="true"
+               [multiple]="true"
+               [virtualScroll]="true"
+               [ngModelOptions]="{ standalone: true }"
+               [(ngModel)]="selectedActors"
+    >
+    </ng-select>
+  </div>
+
+  <div class="flex flex-col font-medium">
+    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+           for="company">{{ 'movies.create-update.company' | translate }}</label>
+    <input
+      class="block w-full text-gray-700 border border-gray-300 rounded py-2 px-2.5 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+      type="text"
+      id="company"
+      placeholder="{{ 'movies.create-update.company-placeholder' | translate }}"
+      formControlName="company"
+      [ngClass]="{ 'border-red-600': form.invalid && (formControls.company.dirty || formControls.company.touched) && formControls.company.errors }">
+  </div>
+
+  <div class="flex flex-col font-medium">
+    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+           for="year">{{ 'movies.create-update.year' | translate }}</label>
+    <input
+      class="block w-full text-gray-700 border border-gray-300 rounded py-2 px-2.5 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+      type="text"
+      id="year"
+      min="4"
+      max="4"
+      placeholder="{{ 'movies.create-update.year-placeholder' | translate }}"
+      formControlName="year"
+      [ngClass]="{ 'border-red-600': form.invalid && (formControls.year.dirty || formControls.year.touched) && formControls.year.errors }"
+    >
+  </div>
+
+  <div class="flex flex-col font-medium">
+    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+           for="duration">{{ 'movies.create-update.duration' | translate }}</label>
+    <input
+      class="block w-full text-gray-700 border border-gray-300 rounded py-2 px-2.5 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+      type="text"
+      id="duration"
+      placeholder="{{ 'movies.create-update.duration-placeholder' | translate }}"
+      formControlName="duration"
+      [ngClass]="{ 'border-red-600': form.invalid && (formControls.duration?.dirty || formControls.duration?.touched) && formControls.duration.errors }"
+    >
+  </div>
+
+  <div class="flex flex-col font-medium">
+    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+           for="score">{{ 'movies.create-update.score' | translate }}</label>
+    <input
+      class="block w-full text-gray-700 border border-gray-300 rounded py-2 px-2.5 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+      type="text"
+      id="score"
+      placeholder="{{ 'movies.create-update.score-placeholder' | translate }}"
+      formControlName="score"
+      [ngClass]="{ 'border-red-600': form.invalid && (formControls.score.dirty || formControls.score.touched) && formControls.score.errors }"
+    >
+  </div>
+
+  <button type="submit"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+  >
+    Crear
+  </button>
+</form>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppState } from "../../../store/app.states";
 import { Store } from "@ngrx/store";
 import { selectMovie } from "../../../store/movies/movie.selectors";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Movie } from "../../../core/models/movie";
 import { getMovieById } from "../../../store/movies/movie.actions";
 import { getActorsByIds } from "../../../store/actors/actor.actions";
@@ -26,6 +26,7 @@ export class MovieDetailComponent implements OnInit {
   deleteModal = false
 
   constructor(private store$: Store<AppState>,
+              private router: Router,
               private route: ActivatedRoute) {
   }
 
@@ -43,6 +44,10 @@ export class MovieDetailComponent implements OnInit {
         this.store$.select(selectCompany).subscribe(company => this.company = company)
       }
     });
+  }
+
+  goToUpdate() {
+    this.router.navigateByUrl(`/movies/update/${ this.movie.id }`)
   }
 
   openDeleteModal() {
