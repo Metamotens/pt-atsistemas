@@ -30,3 +30,17 @@ export const getMovieByIdFailure = createAction(
   props<{ error: any }>()
 )
 
+export const deleteMovie = createAction(
+  '[MOVIES] Delete movie',
+  props<{ id: number }>()
+)
+
+export const deleteMovieSuccess = createAction(
+  '[MOVIES] Delete movie success'
+)
+
+export const deleteMovieFailure = createAction(
+  '[MOVIES] Delete movie failure',
+  props<{ error: any }>()
+)
+

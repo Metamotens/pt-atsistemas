@@ -1,6 +1,9 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import {
+  deleteMovie,
+  deleteMovieFailure,
+  deleteMovieSuccess,
   getMovieById,
   getMovieByIdFailure,
   getMovieByIdSuccess,
@@ -54,6 +57,21 @@ export class MovieEffect {
             return of(getMovieByIdFailure({ error: error.message }));
           }),
           tap(() => this.spinnerSvc.hide())
+        )
+      )
+    )
+  )
+
+  deleteMovie$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(deleteMovie),
+      switchMap(({ id }) =>
+        this.movieSvc.deleteMovie(id).pipe(
+          map(() => deleteMovieSuccess()),
+          catchError(error => {
+            this.toastrSvc.error(this.translateSvc.instant('errors.movie-delete'));
+            return of(deleteMovieFailure({ error: error.message }));
+          })
         )
       )
     )

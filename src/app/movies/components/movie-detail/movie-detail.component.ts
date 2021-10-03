@@ -23,6 +23,7 @@ export class MovieDetailComponent implements OnInit {
   movie!: Movie;
   company!: Company | null;
   actors$!: Observable<Actor[]>;
+  deleteModal = false
 
   constructor(private store$: Store<AppState>,
               private route: ActivatedRoute) {
@@ -42,5 +43,18 @@ export class MovieDetailComponent implements OnInit {
         this.store$.select(selectCompany).subscribe(company => this.company = company)
       }
     });
+  }
+
+  openDeleteModal() {
+    this.disableScroll();
+    this.deleteModal = !this.deleteModal;
+  }
+
+  disableScroll() {
+    const x = window.scrollX;
+    const y = window.scrollY;
+    window.onscroll = function () {
+      window.scrollTo(x, y);
+    };
   }
 }

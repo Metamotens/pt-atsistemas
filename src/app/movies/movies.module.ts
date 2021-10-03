@@ -7,13 +7,15 @@ import { MovieCardComponent } from './components/movie-card/movie-card.component
 import { TranslateModule } from "@ngx-translate/core";
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 import { SharedModule } from "../shared/shared.module";
+import { MovieDeleteComponent } from './components/movie-detail/movie-delete/movie-delete.component';
 
 
 @NgModule({
   declarations: [
     MovieListComponent,
     MovieCardComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    MovieDeleteComponent
   ],
   imports: [
     CommonModule,

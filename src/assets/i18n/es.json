@@ -10,11 +10,16 @@
     "duration": "Duración",
     "actors": "Actores",
     "company": "Estudio",
-    "genres": "Géneros"
+    "genres": "Géneros",
+    "delete-title": "Borrar pelicula",
+    "delete-message": "¿Estas seguro que desea borrar esta pelicula?",
+    "delete-cancel-btn": "Cancelar",
+    "delete-submit-btn": "Confirmar"
   },
   "errors": {
     "movies": "Error al obtener listado de peliculas",
     "movie": "Error al obtener pelicula",
+    "movie-delete": "Error al eliminar pelicula",
     "actors": "Error al obtener los actores",
     "company": "Error al obtener estudio"
   }
