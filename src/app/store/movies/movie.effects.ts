@@ -13,6 +13,7 @@ import { MovieService } from "../../core/services/movie.service";
 import { of } from "rxjs";
 import { NgxSpinnerService } from "ngx-spinner";
 import { ToastrService } from "ngx-toastr";
+import { TranslateService } from "@ngx-translate/core";
 
 @Injectable()
 export class MovieEffect {
@@ -20,7 +21,8 @@ export class MovieEffect {
   constructor(private actions$: Actions,
               private movieSvc: MovieService,
               private spinnerSvc: NgxSpinnerService,
-              private toastrSvc: ToastrService) {
+              private toastrSvc: ToastrService,
+              private translateSvc: TranslateService) {
   }
 
   getMovies$ = createEffect(() =>
@@ -31,7 +33,7 @@ export class MovieEffect {
         this.movieSvc.getMovies().pipe(
           map(movies => getMoviesSuccess({ movies })),
           catchError(error => {
-            this.toastrSvc.error('Error al obtener listado de peliculas');
+            this.toastrSvc.error(this.translateSvc.instant('errors.movies'));
             return of(getMoviesFailure({ error: error.message }));
           }),
           tap(() => this.spinnerSvc.hide())
@@ -48,7 +50,7 @@ export class MovieEffect {
         this.movieSvc.getMovieById(id).pipe(
           map(movie => getMovieByIdSuccess({ movie })),
           catchError(error => {
-            this.toastrSvc.error(error.message);
+            this.toastrSvc.error(this.translateSvc.instant('errors.movie'));
             return of(getMovieByIdFailure({ error: error.message }));
           }),
           tap(() => this.spinnerSvc.hide())

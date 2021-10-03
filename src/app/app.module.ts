@@ -17,6 +17,8 @@ import { ToastrModule } from "ngx-toastr";
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { SharedModule } from "./shared/shared.module";
+import { ActorEffect } from "./store/actors/actor.effects";
+import { CompanyEffect } from "./store/companies/company.effects";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -42,11 +44,11 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     ToastrModule.forRoot(),
     StoreModule.forRoot(reducers, {}),
-    EffectsModule.forRoot([MovieEffect]),
+    EffectsModule.forRoot([MovieEffect, ActorEffect, CompanyEffect]),
     StoreDevtoolsModule.instrument({
       logOnly: environment.production
     }),
-    SharedModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

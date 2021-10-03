@@ -1,7 +1,21 @@
 {
   "navbar": {
     "movies": "Peliculas",
-    "actors":  "Actores",
+    "actors": "Actores",
     "studios": "Estudios"
+  },
+  "movies": {
+    "no-content": "No hay peliculas que mostrar",
+    "score": "Puntuación",
+    "duration": "Duración",
+    "actors": "Actores",
+    "company": "Estudio",
+    "genres": "Géneros"
+  },
+  "errors": {
+    "movies": "Error al obtener listado de peliculas",
+    "movie": "Error al obtener pelicula",
+    "actors": "Error al obtener los actores",
+    "company": "Error al obtener estudio"
   }
 }

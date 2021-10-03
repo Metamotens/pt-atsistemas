@@ -1,0 +1,5 @@
+<article class="border border-black rounded-md p-2 cursor-pointer" [routerLink]="['/movies/detail', movie?.id]">
+  <div>{{ movie.title }}</div>
+  <img [src]="movie?.poster" alt="poster url" loading="lazy" defaultImage>
+  <span *ngFor="let genre of movie?.genre">#{{ genre }}</span>
+</article>

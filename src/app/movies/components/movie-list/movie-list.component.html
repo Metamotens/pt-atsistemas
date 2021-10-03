@@ -1,0 +1,7 @@
+<section *ngIf="movies$ | async as movies; else noContent"
+         class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-5">
+  <app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
+</section>
+<ng-template #noContent>
+  <span class="font-bold">{{ 'movies.no-content' | translate }}</span>
+</ng-template>

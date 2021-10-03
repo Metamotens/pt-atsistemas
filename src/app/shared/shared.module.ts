@@ -3,13 +3,19 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule } from "@angular/router";
 import { TranslateModule } from "@ngx-translate/core";
+import { DefaultImageDirective } from './directives/default-image.directive';
+import { DurationConverterPipe } from './pipes/duration-converter.pipe';
 
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    DefaultImageDirective,
+    DurationConverterPipe
   ],
   exports: [
-    NavbarComponent
+    NavbarComponent,
+    DefaultImageDirective,
+    DurationConverterPipe
   ],
   imports: [
     CommonModule,

@@ -12,7 +12,11 @@ export class NavbarComponent {
   constructor() {
   }
 
-  showHide() {
-    this.sidenav.nativeElement.classList.toggle("-translate-x-full")
+  show() {
+    this.sidenav.nativeElement.classList.remove("-translate-x-full")
+  }
+
+  hide() {
+    this.sidenav.nativeElement.classList.add("-translate-x-full")
   }
 }
