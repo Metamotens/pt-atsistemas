@@ -114,12 +114,18 @@ export class MovieEffect {
   deleteMovie$ = createEffect(() =>
     this.actions$.pipe(
       ofType(deleteMovie),
+      tap(() => this.spinnerSvc.show()),
       switchMap(({ id }) =>
         this.movieSvc.deleteMovie(id).pipe(
           map(deleteMovieSuccess),
           catchError(error => {
             this.toastrSvc.error(this.translateSvc.instant('errors.movie-delete'));
             return of(deleteMovieFailure({ error: error.message }));
+          }),
+          tap(() => {
+            this.router.navigate(['/movies']);
+            this.toastrSvc.info(this.translateSvc.instant('movies.create-update.delete-success'));
+            this.spinnerSvc.hide();
           })
         )
       )

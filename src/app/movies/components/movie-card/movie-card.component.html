@@ -1,5 +1,16 @@
-<article class="border border-black rounded-md p-2 cursor-pointer" [routerLink]="['/movies/detail', movie?.id]">
-  <div>{{ movie.title }}</div>
-  <img [src]="movie?.poster" alt="poster url" loading="lazy" defaultImage>
-  <span *ngFor="let genre of movie?.genre">#{{ genre }}</span>
+<article class="overflow-hidden rounded-lg shadow-lg cursor-pointer" [routerLink]="['/movies/detail', movie?.id]">
+
+  <img class="block h-auto w-full" [src]="movie?.poster" alt="poster url" loading="lazy" defaultImage>
+
+  <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+    <h1 class="text-base">
+      <span>{{ movie.title }}</span>
+    </h1>
+  </header>
+
+  <footer class="flex items-center justify-between leading-none p-2 md:p-4">
+    <span *ngFor="let genre of movie?.genre">#{{ genre }}</span>
+  </footer>
+
 </article>
+

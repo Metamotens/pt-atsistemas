@@ -1,5 +1,5 @@
 <section *ngIf="movies$ | async as movies"
-         class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-5">
+         class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-14 p-5">
   <ng-container *ngIf="movies.length > 0 else noContent">
     <app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
   </ng-container>

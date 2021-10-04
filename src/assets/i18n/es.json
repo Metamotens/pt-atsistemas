@@ -36,7 +36,8 @@
       "score-placeholder": "Puntuación",
       "btn-save": "Guardar",
       "create-success": "Pelicula creada correctamente",
-      "update-success": "Pelicula actualizada correctamente"
+      "update-success": "Pelicula actualizada correctamente",
+      "delete-success": "Pelicula borrada correctamente"
     }
   },
   "errors": {
