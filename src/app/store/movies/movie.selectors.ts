@@ -12,3 +12,8 @@ export const selectMovie = createSelector(
   selector,
   state => state.movie
 )
+
+export const selectIsLoadingMovies = createSelector(
+  selector,
+  state => state.loading
+)

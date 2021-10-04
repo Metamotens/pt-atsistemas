@@ -33,12 +33,17 @@
       "duration": "Duración",
       "duration-placeholder": "Duración",
       "score": "Puntuación",
-      "score-placeholder": "Puntuación"
+      "score-placeholder": "Puntuación",
+      "btn-save": "Guardar",
+      "create-success": "Pelicula creada correctamente",
+      "update-success": "Pelicula actualizada correctamente"
     }
   },
   "errors": {
     "movies": "Error al obtener listado de peliculas",
     "movie": "Error al obtener pelicula",
+    "movie-create": "Error al crear nueva pelicula",
+    "movie-update": "Error al modificar pelicula",
     "movie-delete": "Error al eliminar pelicula",
     "actors": "Error al obtener los actores",
     "companies": "Error al obtener listado de estudios",

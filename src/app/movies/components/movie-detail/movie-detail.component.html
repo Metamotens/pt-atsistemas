@@ -1,4 +1,4 @@
-<section class="p-5">
+<section class="p-5" *ngIf="(loading$ | async) != true">
   <img class="mb-1 m-auto" [src]="movie?.poster" alt="poster url" loading="lazy" defaultImage>
 
   <!--score and duration-->
@@ -43,7 +43,7 @@
   <div class="flex justify-end items-center w-full mt-4 font-bold">
     <button
       class="flex justify-center items-center bg-green-600 hover:bg-green-500 w-12 h-12 rounded-3xl border-2 border-black"
-      (click)="goToUpdate()"
+      [routerLink]="['/movies/update', movie?.id]"
     >
       <img src="assets/images/icon-pencil.svg" alt="update movie"/>
     </button>

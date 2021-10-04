@@ -5,7 +5,7 @@ export interface Movie {
   genre: string[];
   actors: number[];
   company: number;
-  year: string;
+  year: number;
   duration: number;
-  imdbRating: string;
+  imdbRating: number;
 }

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from "@ngrx/store";
-import { AppState } from "../../../store/app.states";
-import { Observable } from "rxjs";
-import { getMovies } from "../../../store/movies/movie.actions";
-import { selectMovies } from "../../../store/movies/movie.selectors";
-import { Movie } from "../../../core/models/movie";
-import { Router } from "@angular/router";
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../store/app.states';
+import { Observable } from 'rxjs';
+import { getMovies } from '../../../store/movies/movie.actions';
+import { selectMovies } from '../../../store/movies/movie.selectors';
+import { Movie } from '../../../core/models/movie';
+import { Router } from '@angular/router';
+import { setTitle } from '../../../store/title/title.actions';
 
 @Component({
   selector: 'app-movie-list',
@@ -14,18 +15,19 @@ import { Router } from "@angular/router";
 })
 export class MovieListComponent implements OnInit {
 
-  movies$!: Observable<Movie[]>
+  movies$!: Observable<Movie[]>;
 
   constructor(private store$: Store<AppState>,
               private router: Router) {
   }
 
   ngOnInit(): void {
+    this.store$.dispatch(setTitle({ title: 'Peliculas' }));
     this.store$.dispatch(getMovies());
     this.movies$ = this.store$.select(selectMovies);
   }
 
   goToCreate() {
-    this.router.navigate(['/movies/create'])
+    this.router.navigate(['/movies/create']);
   }
 }
