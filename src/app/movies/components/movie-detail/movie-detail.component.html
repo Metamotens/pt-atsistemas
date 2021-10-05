@@ -1,4 +1,4 @@
-<section class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-5 p-5 m-5 bg-white items-center overflow-hidden rounded-lg shadow-lg" *ngIf="(loading$ | async) != true">
+<section class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-5 p-5 m-5 bg-white items-center overflow-hidden rounded-lg shadow-lg" *ngIf="(loading$ | async) != true">
 
   <div>
     <img class="mb-1 m-auto" [src]="movie?.poster" alt="poster url" loading="lazy" defaultImage>
@@ -22,9 +22,9 @@
       <div>
         <div class="border-b border-black text-lg font-medium">{{ 'movies.actors' | translate }}</div>
         <div class="flex flex-col p-2 text-gray-500">
-          <ng-container *ngIf="actors$ | async as actors">
-            <div *ngFor="let actor of actors">{{ actor.fullName }}</div>
-          </ng-container>
+          <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3" *ngIf="actors$ | async as actors">
+            <span *ngFor="let actor of actors">{{ actor.fullName }}</span>
+          </div>
         </div>
       </div>
 
@@ -37,23 +37,21 @@
       <!--genre-->
       <div>
         <div class="border-b border-black text-lg font-medium">{{ 'movies.genres' | translate }}</div>
-        <div class="pt-2">
-          <span class="mr-2" *ngFor="let genre of movie?.genre">#{{ genre }}</span>
+        <div class="pt-2 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+          <span class="mr-2 p-2 break-normal" *ngFor="let genre of movie?.genre">#{{ genre }}</span>
         </div>
       </div>
     </div>
 
     <!--edit and remove buttons-->
     <div class="flex justify-end items-center w-full mt-4 font-bold">
-      <button
-        class="flex justify-center items-center bg-green-600 hover:bg-green-500 w-12 h-12 rounded-3xl border-2 border-black"
-        [routerLink]="['/movies/update', movie?.id]"
+      <button class="flex justify-center items-center bg-green-600 hover:bg-green-500 w-12 h-12 rounded-3xl border-2 border-black"
+              [routerLink]="['/movies/update', movie?.id]"
       >
         <img src="assets/images/icon-pencil.svg" alt="update movie"/>
       </button>
-      <button
-        class="flex justify-center items-center bg-red-600 hover:bg-red-500 ml-1 w-12 h-12 rounded-3xl border-2 border-black"
-        (click)="openDeleteModal()"
+      <button class="flex justify-center items-center bg-red-600 hover:bg-red-500 ml-1 w-12 h-12 rounded-3xl border-2 border-black"
+              (click)="openDeleteModal()"
       >
         <img src="assets/images/icon-trash.svg" alt="delete movie"/>
       </button>

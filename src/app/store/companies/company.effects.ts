@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { ToastrService } from "ngx-toastr";
-import { catchError, map, switchMap } from "rxjs/operators";
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { of } from "rxjs";
 import {
   getCompanies,
@@ -13,6 +13,7 @@ import {
 } from "./company.actions";
 import { CompanyService } from "../../core/services/company.service";
 import { TranslateService } from "@ngx-translate/core";
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable()
 export class CompanyEffect {
@@ -20,7 +21,8 @@ export class CompanyEffect {
   constructor(private actions$: Actions,
               private companySvc: CompanyService,
               private toastrSvc: ToastrService,
-              private translateSvc: TranslateService) {
+              private translateSvc: TranslateService,
+              private spinnerSvc: NgxSpinnerService) {
   }
 
   getCompanies$ = createEffect(() =>
@@ -41,13 +43,15 @@ export class CompanyEffect {
   getCompanyById$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getCompanyById),
+      tap(() => this.spinnerSvc.show()),
       switchMap(({ id }) =>
         this.companySvc.getCompanyById(id).pipe(
           map(company => getCompanyByIdSuccess({ company })),
           catchError(error => {
             this.toastrSvc.error(this.translateSvc.instant('errors.company'));
             return of(getCompanyByIdFailure({ error: error.message }));
-          })
+          }),
+          tap(() => this.spinnerSvc.hide()),
         )
       )
     )

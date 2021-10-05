@@ -38,8 +38,4 @@ export class NavbarComponent implements OnInit {
   hide() {
     this.sidenav.nativeElement.classList.add('-translate-x-full');
   }
-
-  goBack() {
-    this.router.navigateByUrl('/movies');
-  }
 }

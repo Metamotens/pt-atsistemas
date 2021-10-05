@@ -7,6 +7,7 @@ import { selectMovies } from '../../../store/movies/movie.selectors';
 import { Movie } from '../../../core/models/movie';
 import { Router } from '@angular/router';
 import { setTitle } from '../../../store/title/title.actions';
+import { skip } from 'rxjs/operators';
 
 @Component({
   selector: 'app-movie-list',
@@ -24,10 +25,10 @@ export class MovieListComponent implements OnInit {
   ngOnInit(): void {
     this.store$.dispatch(setTitle({ title: 'Peliculas' }));
     this.store$.dispatch(getMovies());
-    this.movies$ = this.store$.select(selectMovies);
+    this.movies$ = this.store$.select(selectMovies).pipe(skip(1));
   }
 
   goToCreate() {
-    this.router.navigate(['/movies/create']);
+    this.router.navigateByUrl('/movies/create');
   }
 }

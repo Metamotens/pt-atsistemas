@@ -2,14 +2,14 @@
 
   <img class="block h-auto w-full" [src]="movie?.poster" alt="poster url" loading="lazy" defaultImage>
 
-  <header class="flex items-center justify-between leading-tight p-2 md:p-4">
-    <h1 class="text-base">
-      <span>{{ movie.title }}</span>
+  <header class="flex items-center justify-between leading-tight pl-4 pt-4 pr-4">
+    <h1 class="text-base truncate">
+      <div class="w-64 truncate">{{ movie.title }}</div>
     </h1>
   </header>
 
-  <footer class="flex items-center justify-between leading-none p-2 md:p-4">
-    <span *ngFor="let genre of movie?.genre">#{{ genre }}</span>
+  <footer class="grid gap-1 grid-cols-3 leading-none p-2 md:p-4">
+    <span class="truncate" *ngFor="let genre of movie?.genre">#{{ genre }}</span>
   </footer>
 
 </article>
