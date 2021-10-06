@@ -13,7 +13,7 @@
       </div>
       <div class="flex flex-col">
         <span class="font-bold">{{ 'movies.duration' | translate }}</span>
-        <span class="text-right text-gray-500">{{ movie.duration | durationConverter }}</span>
+        <span class="text-right text-gray-500">{{ movie?.duration || 0 | durationConverter }}</span>
       </div>
     </div>
 

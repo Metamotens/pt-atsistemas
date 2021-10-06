@@ -2,7 +2,7 @@
 
   <!--navbar-->
   <div class="flex flex-row items-center shadow-lg text-gray-700 bg-white flex-shrink-0 p-2 font-medium w-full h-14">
-    <img *ngIf="!showArrowBack" id="navbar" (click)="show()" class="cursor-pointer mr-4"
+    <img *ngIf="!showArrowBack" id="navbar" (click)="show()" class="cursor-pointer mr-4 test"
          src="assets/images/icon-menu.svg" alt="menu icon">
     <img id="back" *ngIf="showArrowBack" [routerLink]="['/movies']" class="cursor-pointer mr-4" src="assets/images/icon-arrow-left.svg"
          alt="menu icon">

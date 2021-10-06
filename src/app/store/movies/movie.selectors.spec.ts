@@ -69,7 +69,7 @@ describe('Movie selectors', () => {
     expect(result[1].id).toEqual(2);
   });
 
-  it('should get movie', () => {
+  it('should get movie by id', () => {
     const result = fromSelectors.selectMovie.projector(initialState);
     expect(result?.id).toEqual(2);
   });

@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieCreateUpdateComponent } from './movie-create-update.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { provideMockStore } from '@ngrx/store/testing';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { NgSelectModule } from "@ng-select/ng-select";
 
 describe('MovieCreateComponent', () => {
   let component: MovieCreateUpdateComponent;
@@ -8,7 +13,9 @@ describe('MovieCreateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MovieCreateUpdateComponent ]
+      declarations: [MovieCreateUpdateComponent],
+      imports: [TranslateModule.forRoot({}), RouterTestingModule, NgSelectModule, ReactiveFormsModule, FormsModule],
+      providers: [provideMockStore({}), FormBuilder]
     })
     .compileComponents();
   });

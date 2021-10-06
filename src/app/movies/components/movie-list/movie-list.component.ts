@@ -28,7 +28,7 @@ export class MovieListComponent implements OnInit {
     this.movies$ = this.store$.select(selectMovies).pipe(skip(1));
   }
 
-  goToCreate() {
-    this.router.navigateByUrl('/movies/create');
+  goToCreate(): void {
+    this.router.navigate(['/movies/create']);
   }
 }
